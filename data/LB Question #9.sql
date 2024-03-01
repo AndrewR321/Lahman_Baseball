@@ -4,11 +4,11 @@
 SELECT *
 FROM awardsmanagers;
 
-SELECT DISTINCT playerid, namefirst, namelast, COUNT(awardid)
-FROM awardsmanagers INNER JOIN people USING (playerid)
+SELECT DISTINCT playerid, namefirst, namelast, COUNT(awardid), lgid
+FROM awardsmanagers FULL JOIN people USING (playerid)
 WHERE awardid = 'TSN Manager of the Year'
-GROUP BY playerid, namefirst, namelast
-ORDER BY COUNT(awardid) DESC;
+GROUP BY playerid, namefirst, namelast, lgid
+ORDER BY playerid DESC;
 
 SELECT playerid, COUNT(awardid)
 FROM awardsmanagers
